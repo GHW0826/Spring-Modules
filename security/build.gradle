@@ -7,9 +7,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jsoup:jsoup:1.18.1'
-    implementation 'org.springframework:spring-context:6.1.13'
+    implementation project(':common')
 
+    implementation 'org.springframework.kafka:spring-kafka:3.2.4'
+    testImplementation 'org.springframework.kafka:spring-kafka-test:3.2.4'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 
     // Lombok

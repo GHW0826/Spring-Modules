@@ -6,19 +6,10 @@ import com.finance.auth.login.dto.SignInRequest;
 import com.finance.auth.login.dto.SignInResponse;
 import com.finance.auth.login.dto.SignUpRequest;
 import com.finance.auth.login.dto.SignUpResponse;
-import com.finance.common.exception.ClientNotFoundException;
-import com.finance.common.exception.DuplicateUsernameException;
-import com.finance.common.exception.InvalidPasswordException;
-import com.finance.common.jwt.JwtUtil;
-import com.finance.common.response.ApiResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @Transactional

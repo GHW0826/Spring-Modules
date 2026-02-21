@@ -7,4 +7,5 @@ public record SignUpRequest(
         @NotBlank String clientId,
         @NotBlank String clientName,
         @NotBlank @Size(min = 8) String password
-) {}
+) {
+}

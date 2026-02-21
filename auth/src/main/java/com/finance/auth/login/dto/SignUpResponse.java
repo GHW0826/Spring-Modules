@@ -5,4 +5,5 @@ public record SignUpResponse(
         String clientId,
         String clientName,
         String message // optional
-) {}
+) {
+}
