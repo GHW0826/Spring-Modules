@@ -1,18 +1,35 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
-repositories {
-    mavenCentral()
+def bootVersion = '4.0.4'
+def lombokVersion = '1.18.38'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+
+    withSourcesJar()
 }
 
 dependencies {
-    implementation 'org.jsoup:jsoup:1.18.1'
-    implementation 'org.springframework:spring-context:6.1.13'
+    api platform("org.springframework.boot:spring-boot-dependencies:${bootVersion}")
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    api 'org.springframework.boot:spring-boot-autoconfigure'
+    api 'org.springframework:spring-context'
+    api 'org.springframework.kafka:spring-kafka'
+    api 'org.jsoup:jsoup:1.18.1'
 
-    // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.32'
-    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${bootVersion}"
+
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:${bootVersion}")
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }

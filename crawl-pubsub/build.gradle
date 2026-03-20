@@ -1,18 +1,13 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
-repositories {
-    mavenCentral()
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 dependencies {
-    implementation 'org.springframework.kafka:spring-kafka:3.2.4'
-    testImplementation 'org.springframework.kafka:spring-kafka-test:3.2.4'
-
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
-
-    // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.32'
-    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    api project(':spring-modules:crawl')
 }
